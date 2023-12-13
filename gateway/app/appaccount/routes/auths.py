@@ -9,7 +9,7 @@ from appaccount.serializers.auths import (
 from appcore.services.auths import ServiceBearerTokenAuth
 from appaccount.services.auths import BearerTokenAuth, create_session
 
-router = Router(tags=["auths"])
+router = Router(tags=["account", "auth"])
 
 
 @router.post(
