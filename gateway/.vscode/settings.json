@@ -1,0 +1,7 @@
+{
+    "terminal.integrated.cwd": "app",
+    "editor.formatOnSave": true,
+    "python.analysis.extraPaths": [
+        "app"
+      ],
+}
