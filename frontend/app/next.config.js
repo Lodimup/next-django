@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  experimental: {
+    instrumentationHook: true, // allows initialization using instrumentation.ts
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
