@@ -9,8 +9,8 @@ bump:
 	cd app &&\
 	npm i next@latest react@latest react-dom@latest eslint-config-next@latest &&\
 	npm update
-# generate typesafe api schema to app/schemas/api-schema.d.ts
+# generate typesafe api schema to app/schemas/gateway-api-schema.d.ts
 gen-api-schema:
 	@echo "Generating API schema"
 	cd app &&\
-	npx openapi-typescript ${GATEWAY_URL}/api/openapi.json -o schemas/api-schema.d.ts
+	npx openapi-typescript ${GATEWAY_URL}/api/openapi.json -o schemas/gateway-api-schema.d.ts
