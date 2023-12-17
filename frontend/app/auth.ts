@@ -65,8 +65,9 @@ export const {
     async session({ session, token }) {
       session.user = {
         ...session.user,
-        // @ts-ignore docs not updated on how to augment JWT
-        accessToken: token.accessToken,
+        //docs not updated on how to augment JWT
+        accessToken: token.accessToken as string,
+        refreshTokenExpiresAt: token.refreshTokenExpiresAt as number,
       };
       return session;
     },

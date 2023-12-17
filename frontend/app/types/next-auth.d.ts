@@ -14,6 +14,7 @@ declare module "next-auth" {
       email: string;
       image: string;
       accessToken: string;
+      refreshTokenExpiresAt: number;
     } & DefaultSession["user"];
   }
 }
