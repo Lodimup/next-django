@@ -10,11 +10,11 @@ function envManager() {
   const ENVS = [
     "NEXT_PUBLIC_GATEWAY_URL",
     "GATEWAY_URL",
-    "NEXTAUTH_URL",
-    "NEXTAUTH_SECRET",
     "GATEWAY_SERVICE_TOKEN",
-    "GOOGLE_CLIENT_ID",
-    "GOOGLE_CLIENT_SECRET",
+    "AUTH_URL",
+    "AUTH_SECRET",
+    "AUTH_GOOGLE_ID",
+    "AUTH_GOOGLE_SECRET",
   ];
   let errs: any[] = [];
   ENVS.forEach((env) => {
