@@ -29,7 +29,7 @@ DEBUG = ENVS["DEBUG"]
 
 
 ALLOWED_HOSTS = ENVS["ALLOWED_HOSTS"]
-CORS_ALLOWED_ORIGINS = ENVS["CORS_ALLOWED_ORIGINS"]
+CORS_ALLOWED_ORIGINS = ENVS["CORS_ALLOWED_ORIGINS"]  # remove if cors set in nginx
 
 # Application definition
 
@@ -49,7 +49,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",  # 3rd party, remove if cors set in nginx
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # 3rd party
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",

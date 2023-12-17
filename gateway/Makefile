@@ -21,3 +21,8 @@ drop-tables:
 	exit 0;
 # Re-initialize project
 init-proj: drop-tables m
+# Run hypercorn WSGI
+hypercorn:
+	cd app &&\
+	python manage.py collectstatic --noinput &&\
+	hypercorn app.asgi:application --workers 4 -b 0.0.0.0:8000
