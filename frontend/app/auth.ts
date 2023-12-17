@@ -42,7 +42,7 @@ export const {
           return token;
         }
       }
-      if ((token.expiresAt as number) > new Date().getTime() / 1000) {
+      if ((token.expiresAt as number) < new Date().getTime() / 1000) {
         const client = await getUnAuthClient();
         const { data, error } = await client.POST(
           "/api/account/auths/refresh/",
