@@ -1,7 +1,7 @@
-from typing import Literal
-from ninja import ModelSchema, Schema, Field
+from ninja import ModelSchema, Field
 from pydantic import field_validator
 from appaccount.models.accounts import UserProfile
+from django.contrib.auth.models import User
 
 
 class UserProfileSchema(ModelSchema):
@@ -15,6 +15,7 @@ class MeGetOut(UserProfileSchema):
 
 
 class MePatchIn(ModelSchema):
+    username: str = Field(None, min_length=3, max_length=150)
     class Meta:
         model = UserProfile
         exclude = ["id", "user", "created", "updated"]
@@ -24,6 +25,12 @@ class MePatchIn(ModelSchema):
         allowed_genders = UserProfile.GENDER_CHOICES.keys()
         if v not in allowed_genders:
             raise ValueError(f'gender must be one of {", ".join(allowed_genders)}')
+        return v
+    
+    @field_validator("username")
+    def validate_username(cls, v):
+        if User.objects.filter(username=v).exists():
+            raise ValueError("username already exists")
         return v
 
 

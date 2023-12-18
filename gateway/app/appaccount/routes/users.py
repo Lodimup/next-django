@@ -41,7 +41,11 @@ def patch_me(request, payload: MePatchIn):
     """
     user = request.auth.user
 
-    for k, v in payload:
+    for k, v in payload.dict(exclude_none=True).items():
+        if k == "username":
+            user.username = v
+            user.save()
+            continue
         setattr(user.userprofile, k, v)
 
     user.userprofile.save()
