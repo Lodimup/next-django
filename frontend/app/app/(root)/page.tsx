@@ -20,6 +20,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { TUserProfileForm } from "./_components/user-profile-form/schemas";
+import { SlowComponent } from "./_components/slow-component";
+import { Suspense } from "react";
 
 export default async function Page() {
   // we can get current user's session
@@ -41,7 +43,7 @@ export default async function Page() {
     username: data.username,
   } as TUserProfileForm;
   return (
-    <main className="p-4">
+    <main className="flex-row p-4 space-y-4">
       <Card>
         <CardHeader>
           <CardTitle>
@@ -62,6 +64,12 @@ export default async function Page() {
           <UserProfileForm {...userProfileFormProps} />
         </CardContent>
       </Card>
+      <Suspense fallback={<SlowComponent.Skeleton />}>
+        <SlowComponent delay={1000} />
+      </Suspense>
+      <Suspense fallback={<SlowComponent.Skeleton />}>
+        <SlowComponent delay={2000} />
+      </Suspense>
     </main>
   );
 }
