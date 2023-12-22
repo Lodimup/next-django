@@ -151,6 +151,8 @@ export interface components {
     };
     /** MePatchIn */
     MePatchIn: {
+      /** Username */
+      username?: string;
       /**
        * First Name
        * @default
