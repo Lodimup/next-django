@@ -34,7 +34,8 @@ export function UserProfileForm(props: TUserProfileForm) {
     if (error) {
       toast.error(error);
       return;
-    } else if (data) {
+    }
+    if (data) {
       toast.success("Profile updated");
       form.reset(data);
     }
