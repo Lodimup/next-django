@@ -58,6 +58,7 @@ def post_refresh(request, payload: RefreshPostIn):
     if session is None:
         return 401, None
     if session.is_refresh_token_expired():
+        session.destory()
         return 401, None
     session.refresh(refresh_token=payload.refresh_token)
     ret = {
