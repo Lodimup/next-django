@@ -42,6 +42,10 @@ export const {
           return token;
         }
       }
+      if ((token.refreshTokenExpiresAt as number) < new Date().getTime() / 1000)
+      {
+        throw new Error("Refresh token expired. Please Login again");
+      }
       if ((token.expiresAt as number) < new Date().getTime() / 1000) {
         const client = await getUnAuthClient();
         const { data, error } = await client.POST(
