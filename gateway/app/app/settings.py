@@ -149,3 +149,14 @@ AWS_S3_ENDPOINT_URL = ENVS["AWS_S3_ENDPOINT_URL"]
 CELERY_BROKER_URL = ENVS['CELERY_BROKER_URL']
 CELERY_RESULT_BACKEND = ENVS['CELERY_RESULT_BACKEND']
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+# Enables Redis Cache
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        'LOCATION': ENVS["REDIS_CACHE_URL"],
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
