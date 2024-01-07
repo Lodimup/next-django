@@ -8,13 +8,14 @@
 import { Button } from "@/components/ui/button";
 import { useNumStore } from "./stores";
 
-export const SomeOtherComponent = () => {
-  const [inc, dec] = useNumStore((state) => [state.inc, state.dec]);
+export const SomeMoreComponent = () => {
+  const [count] = useNumStore((state) => [state.count]);
   return (
     <div className="flex-row space-x-2 border p-4">
-      this is another component <br />
-      <Button onClick={inc}>+</Button>
-      <Button onClick={dec}>-</Button>
+      this is another component does not matter if it is nested or not, state is
+      shared
+      <br />
+      {count}
     </div>
   );
 };
