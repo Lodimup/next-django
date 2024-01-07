@@ -22,6 +22,10 @@ export const {
      * then, store user's bearer token in jwt
      */
     async jwt({ token, trigger, profile }) {
+      // if refresh token is expired, force sign out
+      if (token && new Date().getTime() / 1000 > token.refreshTokenExpiresAt) {
+        return null;
+      }
       if (trigger === "signIn" && profile) {
         const { email } = profile;
         const client = getServiceClient();
@@ -65,9 +69,7 @@ export const {
     async session({ session, token }) {
       session.user = {
         ...session.user,
-        //docs not updated on how to augment JWT
-        accessToken: token.accessToken as string,
-        refreshTokenExpiresAt: token.refreshTokenExpiresAt as number,
+        accessToken: token.accessToken,
       };
       return session;
     },

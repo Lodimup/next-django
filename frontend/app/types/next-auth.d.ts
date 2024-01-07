@@ -14,7 +14,15 @@ declare module "next-auth" {
       email: string;
       image: string;
       accessToken: string;
-      refreshTokenExpiresAt: number;
     } & DefaultSession["user"];
+  }
+}
+
+// https://github.com/nextauthjs/next-auth/discussions/8945#discussioncomment-7799831
+declare module "@auth/core/jwt" {
+  interface JWT {
+    accessToken: string;
+    refreshToken: string;
+    refreshTokenExpiresAt: number;
   }
 }
