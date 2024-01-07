@@ -1,3 +1,8 @@
+/**
+ * State management for the simple counter component.
+ * State is always stored in stores.tsx file and is local to the component.
+ */
+
 import { create } from "zustand";
 
 type State = {

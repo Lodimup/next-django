@@ -1,3 +1,7 @@
+/**
+ * Main compoent is always in index.tsx and the component name is the same as the folder (CamelCase) folder is always kebab-case
+ */
+
 "use client";
 
 import {
