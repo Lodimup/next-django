@@ -9,5 +9,5 @@ export default function Page() {
   signOut({
     callbackUrl: "/",
   });
-  return null;
+  return <div>Signing out...</div>;
 }
