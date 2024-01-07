@@ -26,3 +26,11 @@ hypercorn:
 	cd app &&\
 	python manage.py collectstatic --noinput &&\
 	hypercorn app.asgi:application --workers 4 -b 0.0.0.0:8000
+# Run celery worker
+run-worker:
+	cd app &&\
+	poetry run celery -A app worker -l INFO -E
+# Run celery scheduler
+run-beat:
+	cd app &&\
+	poetry run celery -A app beat -l INFO
