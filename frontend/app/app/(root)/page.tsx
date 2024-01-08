@@ -12,13 +12,18 @@ export default function Page() {
         </CardHeader>
         <CardContent className="flex-row gap-4">
           <div>
-            <Link href="/demo-server-comp">Server component demo</Link>
+            <Link href="/demo/server-comp">
+              Server component & server action demo
+            </Link>
           </div>
           <div>
-            <Link href="/demo-state">State demo</Link>
+            <Link href="/demo/state">State demo</Link>
           </div>
           <div>
-            <Link href="/demo-dynamic-comp">Dynamic component demo</Link>
+            <Link href="/demo/dynamic-comp">Dynamic component demo</Link>
+          </div>
+          <div>
+            <Link href="/demo/suspense">Suspense demo</Link>
           </div>
         </CardContent>
       </Card>
