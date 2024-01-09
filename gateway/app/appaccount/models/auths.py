@@ -1,11 +1,11 @@
 from datetime import timedelta
 
-from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
 from appcore.models.commons import BaseAutoDate, BaseUUID
 from appcore.services.gen_token import gen_token
+from appaccount.models.accounts import User
 
 
 class Session(BaseUUID, BaseAutoDate):

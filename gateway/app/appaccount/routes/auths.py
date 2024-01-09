@@ -21,7 +21,10 @@ def post_login(request, payload: LoginPostIn):
     """
     Login through API. It creates a session, and a user if not exist.
     """
-    session = create_session(payload.email)
+    session = create_session(
+        uid=payload.uid, provider=payload.provider, email=payload.email
+    )
+
     ret = {
         "access_token": session.access_token,
         "expires_in": session.expires_in,

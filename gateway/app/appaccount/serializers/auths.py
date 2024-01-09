@@ -1,9 +1,12 @@
-from ninja import Schema
+from typing import Literal
+from ninja import Field, Schema
 from pydantic import EmailStr
 
 
 class LoginPostIn(Schema):
-    email: EmailStr
+    uid: str
+    provider: Literal["google"]
+    email: EmailStr | None = Field(None, description="Email of the user")
 
 
 class LoginPostOut(Schema):

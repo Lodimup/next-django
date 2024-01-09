@@ -1,5 +1,6 @@
+from typing import Literal
 from appaccount.models.auths import Session
-from django.contrib.auth.models import User
+from appaccount.models.accounts import User
 from ninja.security import HttpBearer
 import random
 import hashlib
@@ -47,16 +48,19 @@ def gen_random_username():
 # fmt: on
 
 
-def create_session(email: str) -> Session:
+def create_session(uid: str, provider: Literal["google"], email: str) -> Session:
     """This is a function to login through service. It creates a session, and a user if not exist.
 
     Args:
+        uid (str): user id
+        provider (str): provider
         email (str): email
 
     Returns:
         Session: session object
     """
-    user: User | None = User.objects.filter(email=email).first()
+    if provider == "google":
+        user: User | None = User.objects.filter(google_uid=uid).first()
     if user is None:
         username = gen_random_username()
         user = User.objects.create_user(
