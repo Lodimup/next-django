@@ -3,6 +3,15 @@ from django.db import models
 
 from appcore.models.commons import BaseAutoDate, BaseUUID
 
+from django.contrib.auth.models import AbstractUser
+
+class User(AbstractUser):
+    """
+    Extending the default Django user model.
+    """
+    id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
+    google_uid = models.CharField(max_length=255, null=True, default=None)
+
 
 class UserProfile(BaseUUID, BaseAutoDate):
     """
