@@ -2,13 +2,15 @@
  * NextAuth's config options
  * @see https://authjs.dev/guides/
  */
+
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
+import Google from "@auth/core/providers/google";
 import {
   getClient,
   getServiceClient,
   getUnAuthClient,
 } from "@/lib/gateway/clients";
+import { issToProvider } from "./lib/auth/providers";
 
 export const {
   handlers: { GET, POST },
@@ -27,10 +29,13 @@ export const {
         return null;
       }
       if (trigger === "signIn" && profile) {
-        const { email } = profile;
         const client = getServiceClient();
         const { data, error } = await client.POST("/api/account/auths/login/", {
-          body: { email: email as string },
+          body: {
+            uid: profile.sub as string,
+            provider: issToProvider(profile.iss as string),
+            email: profile.email,
+          },
         });
         if (error) {
           throw new Error("Failed to login");
