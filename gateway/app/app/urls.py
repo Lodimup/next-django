@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from ninja import NinjaAPI
 from appaccount.api import router as account_router
+from appdemo.api import router as demo_router  # remove when using this template
 
 api = NinjaAPI()
 api.add_router("/account", account_router)
+api.add_router("/demo", demo_router)  # remove when using this template
 
 urlpatterns = [
     path("admin/", admin.site.urls),

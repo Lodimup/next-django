@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # Own
     "appcore",
     "appaccount",
+    "appdemo",  # remove when using this template
 ]
 
 MIDDLEWARE = [

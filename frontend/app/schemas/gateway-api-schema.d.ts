@@ -52,6 +52,10 @@ export interface paths {
      */
     patch: operations["appaccount_routes_users_patch_me"];
   };
+  "/api/demo/demo/form-action-upload/": {
+    /** Post Form Action Upload */
+    post: operations["appdemo_routes_demos_post_form_action_upload"];
+  };
 }
 
 export type webhooks = Record<string, never>;
@@ -71,11 +75,18 @@ export interface components {
     };
     /** LoginPostIn */
     LoginPostIn: {
+      /** Uid */
+      uid: string;
+      /**
+       * Provider
+       * @constant
+       */
+      provider: "google";
       /**
        * Email
-       * Format: email
+       * @description Email of the user
        */
-      email: string;
+      email?: string | null;
     };
     /** RefreshPostOut */
     RefreshPostOut: {
@@ -167,6 +178,11 @@ export interface components {
       gender?: string | null;
       /** Dob */
       dob?: string | null;
+    };
+    /** SvActFormFileDemoPostIn */
+    SvActFormFileDemoPostIn: {
+      /** Name */
+      name: string;
     };
   };
   responses: never;
@@ -280,6 +296,28 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["MePatchOut"];
         };
+      };
+    };
+  };
+  /** Post Form Action Upload */
+  appdemo_routes_demos_post_form_action_upload: {
+    requestBody: {
+      content: {
+        "multipart/form-data": {
+          /** Name */
+          name: string;
+          /**
+           * File
+           * Format: binary
+           */
+          file?: string;
+        };
+      };
+    };
+    responses: {
+      /** @description No Content */
+      204: {
+        content: never;
       };
     };
   };

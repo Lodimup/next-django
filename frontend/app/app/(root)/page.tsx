@@ -6,24 +6,31 @@ export default function Page() {
     <main className="flex p-4">
       <Card>
         <CardHeader>
-          <CardTitle>
-            Welcome to the demo app. Please select a demo from the links below.
-          </CardTitle>
+          <CardTitle>Select a demo from the links below.</CardTitle>
         </CardHeader>
         <CardContent className="flex-row gap-4">
           <div>
             <Link href="/demo/server-comp">
-              Server component & server action demo
+              Server component, form, server action, and auth
             </Link>
           </div>
           <div>
-            <Link href="/demo/state">State demo</Link>
+            <Link href="/demo/state">State management using Zustand</Link>
           </div>
           <div>
-            <Link href="/demo/dynamic-comp">Dynamic component demo</Link>
+            <Link href="/demo/dynamic-comp">
+              Dynamic component: Loading client-side-only component
+            </Link>
           </div>
           <div>
-            <Link href="/demo/suspense">Suspense demo</Link>
+            <Link href="/demo/suspense">
+              Suspense: Streaming component one by one when one finishes
+            </Link>
+          </div>
+          <div>
+            <Link href="/demo/form-action-upload">
+              Upload file: using OpenAPI Fetch, and server action
+            </Link>
           </div>
         </CardContent>
       </Card>
