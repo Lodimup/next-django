@@ -17,8 +17,8 @@ mm:
 	poetry run python manage.py makemigrations
 # Drop local database tables
 drop-tables:
-	psql "dbname=postgres host=db port=5432 user=postgres password=postgres" -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;" ;\
-	exit 0;
+	psql "dbname=${DB_NAME} host=${DB_HOST} port=${DB_PORT} user=${DB_USER} password=${DB_PASS}" -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;" ;\
+	exit 0; 
 # Re-initialize project
 init-proj: drop-tables m
 # Run hypercorn WSGI
