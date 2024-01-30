@@ -1,7 +1,14 @@
 {
     "terminal.integrated.cwd": "app",
-    "editor.formatOnSave": true,
     "python.analysis.extraPaths": [
         "app"
       ],
-}
+      "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+      },
+      "isort.args":["--profile", "black"],
+  }
